@@ -1,4 +1,76 @@
 extends base
 
 block body
-  
+  header
+    span CREATE ACCOUNT
+  section(id='form')
+    form
+      label(for='name')
+        br
+        span(class='sr-only hide') Name
+        input(type='text' id='name' name='name' autofocus required placeholder='NAME' autocomplete='name')
+      label(for='email')
+        span(class='sr-only hide') Email
+        input(type='email' id='email' name='email' required placeholder='EMAIL' autocomplete='email')
+      label(for='password')
+        span(class='sr-only hide') Password
+        input(type='password' id='password' name='password' minLength='0' maxLength='35' required placeholder='PASSWORD' autocomplete='password')
+      label(for='employer')
+        span(class='sr-only hide') Employer
+        input(type='text' id='employer' name='employer' placeholder='EMPLOYER ( OPTIONAL )' autocomplete='employer')
+      label(for='job')
+        span(class='sr-only hide') Job Title
+        input(type='text' id='job' name='job' placeholder='JOB TITLE ( OPTIONAL )' autocomplete='job')
+      label(for='birthday')
+        span(class='sr-only hide') Birthday
+        input(type='text' id='birthday' name='bday' placeholder='BIRTHDAY ( OPTIONAL )' onfocus='(this.type="date")' autocomplete='bday')
+      input(type='submit' id='button' value='SUBMIT')
+  section(id='login')
+    div
+      hr
+    input(type='button' id='button' value='LOG IN')
+  style.
+    body{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    label {
+      display: block;
+      margin-bottom: 20px;
+    }
+    input {
+      height: 40px;
+      width: 96%;
+      border: solid 1px #7cc1f9;
+      text-align: center;
+      margin-left: 1.5%;
+    }
+    hr {
+      border: solid 1px #7cc1f9;
+      background-color: #7cc1f9;
+      width: 95%;
+      height: 3px;
+      margin: 30px 0px;
+    }
+    .hide {
+      display: none;
+    }
+    .center {
+      text-align: center;
+    }
+    #button {
+      background-color: red;
+      color: white;
+    }
+    header {
+      background-color: #7cc1f9;
+      text-align: center;
+      height: 50px;
+    }
+    header span {
+      position: relative;
+      top: 20px;
+      left: auto;
+      color: white;
+    }
