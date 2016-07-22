@@ -40,7 +40,7 @@ GULP.task('dev:sass', ()=>{
   return GULP
     .src(CONFIG.styles.src)
     .pipe($.sourcemaps.init())
-    .pipe($.sass().on('error', logError))
+    .pipe($.sass())
     .pipe($.autoprefixer({
       browsers: ['last 2 versions']
     }))

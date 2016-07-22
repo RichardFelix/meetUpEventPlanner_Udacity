@@ -24,53 +24,10 @@ block body
       label(for='birthday')
         span(class='sr-only hide') Birthday
         input(type='text' id='birthday' name='bday' placeholder='BIRTHDAY ( OPTIONAL )' onfocus='(this.type="date")' autocomplete='bday')
-      input(type='submit' id='button' value='SUBMIT')
+      input.button(type='submit' value='SUBMIT')
   section(id='login')
-    div
+    div.orDiv
       hr
-    input(type='button' id='button' value='LOG IN')
-  style.
-    body{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    label {
-      display: block;
-      margin-bottom: 20px;
-    }
-    input {
-      height: 40px;
-      width: 96%;
-      border: solid 1px #7cc1f9;
-      text-align: center;
-      margin-left: 1.5%;
-    }
-    hr {
-      border: solid 1px #7cc1f9;
-      background-color: #7cc1f9;
-      width: 95%;
-      height: 3px;
-      margin: 30px 0px;
-    }
-    .hide {
-      display: none;
-    }
-    .center {
-      text-align: center;
-    }
-    #button {
-      background-color: red;
-      color: white;
-    }
-    header {
-      background-color: #7cc1f9;
-      text-align: center;
-      height: 50px;
-    }
-    header span {
-      position: relative;
-      top: 20px;
-      left: auto;
-      color: white;
-    }
+      div.circle.center
+        span OR
+    input.button(type='button' value='LOG IN')
