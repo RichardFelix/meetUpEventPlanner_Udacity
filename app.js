@@ -18,7 +18,7 @@ var express = require('express'),
 //----------------------App Settings--------------------------------\\
 //////////////////////////////////////////////////////////////////////
 // mongoose location
-mongoose.connect(config.mongoLocation_dev); // change to mongoLocation_production for production || mongoLocation_dev for dev
+mongoose.connect(config.mongoLocation_production); // change to mongoLocation_production for production || mongoLocation_dev for dev
 
 // template setting
 app.set('view engine', 'jade');
@@ -103,7 +103,7 @@ function existsNdelete(req, res, next){
           throw err;
 
         if(user.length == 0){
-          res.redirect('/');
+          return next();
         }else{
           User.remove({ username: user[0].username }, function(err){
             if(err)
