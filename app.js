@@ -58,7 +58,6 @@ app.post('/login', passport.authenticate('local', { // this middleware is checki
     successRedirect: '/success',
     failureRedirect: '/'
 }), function(req, res){
-
 });
 
 app.get('/success', isLoggedIn, function(req, res){ // using my custom middleware to tell if the req is authenticated if so keep going if not redirect to home
@@ -96,27 +95,26 @@ app.post('/create', existsNdelete, function(req, res){
 });
 
 //custom middle ware to find if a user is exists if so delete it so it can be reregistered And if info is incorrect
-// function existsNdelete(req, res, next){
-//     req.body.email = req.body.email.toLowerCase();
-//
-//     User.find({ username: req.body.email }, function(err, user) {
-//       if (err)
-//           throw err;
-// console.log(`${user}`);
-//         if(user.length == 0){
-//           res.redirect('/');
-//         }else{
-//           User.remove({ username: user[0].username }, function(err){
-//             console.log('remove');
-//             if(err)
-//               throw err;
-//           });
-//
-//           console.log('User successfully deleted!');
-//           return next();
-//         }
-//     })
-// };
+function existsNdelete(req, res, next){
+    req.body.email = req.body.email.toLowerCase();
+
+    User.find({ username: req.body.email }, function(err, user) {
+      if (err)
+          throw err;
+
+        if(user.length == 0){
+          res.redirect('/');
+        }else{
+          User.remove({ username: user[0].username }, function(err){
+            if(err)
+              throw err;
+          });
+
+          console.log('User successfully deleted!');
+          return next();
+        }
+    })
+};
 
 app.get('*', (req, res) =>{
   res.render('index');
