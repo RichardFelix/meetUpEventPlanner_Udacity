@@ -56,12 +56,16 @@ app.get('/', (req, res) =>{
 /////////////////////////////////////////////////////////////
 app.post('/login', passport.authenticate('local', { // this middleware is checking if the login in a sucess or not using the local strategy
     successRedirect: '/success',
-    failureRedirect: '/'
-}), function(req, res){
-});
+    failureRedirect: '/login-page-bad'
+}));
 
 app.get('/success', isLoggedIn, function(req, res){ // using my custom middleware to tell if the req is authenticated if so keep going if not redirect to home
-    res.render('success');
+    res.render('success',
+      {
+        // passing variables of user to jade
+        user: req.user.username
+      }
+    );
 });
 
 // custom middle ware that check it a user is already logged in or not
@@ -74,6 +78,10 @@ function isLoggedIn(req, res, next){
 
 app.get('/login-page', (req, res) =>{
   res.render('login');
+});
+
+app.get('/login-page-bad', (req, res) =>{
+  res.render('login-bad');
 });
 
 ////////////////////////////////////////////////////////////////////////
@@ -89,7 +97,12 @@ app.post('/create', existsNdelete, function(req, res){
     }
 
     passport.authenticate('local')(req, res, function(){ // using local strat and hash password
-      res.render('success');
+      res.render('success',
+        {
+          // passing variables of user to jade
+          user: req.user.username
+        }
+      );
     })
   })
 });
