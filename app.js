@@ -9,14 +9,17 @@ var express = require('express'),
     passport = require('passport'),
     localStrategy = require('passport-local'),
     localMongoose = require('passport-local-mongoose'),
-    port = process.env.PORT || 3000,
     bodyParser = require('body-parser'),
     User = require('./src/models/user'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    methodOverride = require('method-override');
 
 //////////////////////////////////////////////////////////////////////
 //----------------------App Settings--------------------------------\\
 //////////////////////////////////////////////////////////////////////
+// method overide setting
+app.use(methodOverride("_method"));
+
 // mongoose location
 mongoose.connect(config.mongoLocation_production); // change to mongoLocation_production for production || mongoLocation_dev for dev
 
@@ -128,6 +131,29 @@ function existsNdelete(req, res, next){
         }
     })
 };
+
+////////////////////////////////////////////////////////////////////////
+//----------------------Create Event----------------------------------\\
+////////////////////////////////////////////////////////////////////////
+app.put('/addEvent/:userName', (req, res)=>{
+  // update user in db
+   User.findOneAndUpdate({ username: req.params.userName }, {
+        eventName: req.body.name
+    },
+    function(err){
+        if(err)
+            throw err;
+    });
+
+    // find and send user to frontend
+    User.find({ username: req.params.userName }, (err,user)=>{
+      console.log('user');
+            if(err)
+                throw err;
+            else
+                res.render('showEvent', { user: user[0] });
+    });
+});
 
 app.get('*', (req, res) =>{
   res.render('index');

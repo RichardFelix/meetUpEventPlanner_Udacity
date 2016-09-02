@@ -2,4 +2,32 @@ extends base
 
 block body
   header
-    span HELLO #{user}!!
+    span HELLO #{user}!! 
+  section(id='form')
+    form(method='POST' action='/addEvent/#{user}?_method=PUT')
+      label(for='name')
+        br
+        span(class='sr-only hide') Name of Event
+        input(type='text' id='name' name='name' autofocus required placeholder='NAME OF EVENT' autocomplete='name')
+      label(for='type')
+        span(class='sr-only hide') Type of Event
+        input(type='text' id='type' name='type' required maxLength='50' placeholder='TYPE OF THE EVENT' autocomplete='type')
+      label(for='host')
+        span(class='sr-only hide') Event Host
+        input(type='text' id='host' name='host' required minLength='0' maxLength='35' placeholder='EVENT HOST' autocomplete='host')
+      label(for='startDate')
+        span(class='sr-only hide') Start Date
+        input(type='text' id='startDate' name='startDate' required placeholder='START DATE' onfocus='(this.type="date")' autocomplete='startDate')  
+      label(for='endDate')
+        span(class='sr-only hide') End Date
+        input(type='text' id='endDate' name='endDate' required placeholder='END DATE' onfocus='(this.type="date")' autocomplete='endDate')               
+      label(for='guestList')
+        span(class='sr-only hide') Guest List
+        input(type='text' id='guestList' name='guestList' required placeholder='GUEST LIST' autocomplete='guestList')
+      label(for='location')
+        span(class='sr-only hide') Location
+        input(type='text' id='location' name='location' required placeholder='LOCATION' autocomplete='location')
+      label(for='message')
+        span(class='sr-only hide') Optional Message 
+        input(type='text' id='message' name='message' placeholder='MESSAGE (OPTIONAL)' autocomplete='message')
+      input.button(type='submit' value='SUBMIT')
