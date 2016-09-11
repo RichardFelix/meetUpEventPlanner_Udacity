@@ -57,12 +57,14 @@ app.get('/', (req, res) =>{
 /////////////////////////////////////////////////////////////
 //----------------------Login------------------------------\\
 /////////////////////////////////////////////////////////////
-app.post('/login', passport.authenticate('local', { // this middleware is checking if the login in a sucess or not using the local strategy
+// this middleware is checking if the login in a sucess or not using the local strategy
+app.post('/login', passport.authenticate('local', {
     successRedirect: '/success',
     failureRedirect: '/login-page-bad'
 }));
 
-app.get('/success', isLoggedIn, function(req, res){ // using my custom middleware to tell if the req is authenticated if so keep going if not redirect to home
+// using my custom middleware to tell if the req is authenticated if so keep going if not redirect to home
+app.get('/success', isLoggedIn, function(req, res){
     res.render('success',
       {
         // passing variables of user to jade
@@ -138,7 +140,14 @@ function existsNdelete(req, res, next){
 app.put('/addEvent/:userName', (req, res)=>{
   // update user in db
    User.findOneAndUpdate({ username: req.params.userName }, {
-        eventName: req.body.name
+        eventName: req.body.name, // need to find how to send arrays from mongoose
+        type: req.body.type,
+        host: req.body.host,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        guestList: req.body.guestList,
+        location: req.body.location,
+        message: req.body.message
     },
     function(err){
         if(err)
