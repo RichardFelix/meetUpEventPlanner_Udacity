@@ -5,6 +5,11 @@
 Meet up Event Planner Project for my Udacity Senior Front End Development Course
 
 ## How to run Site
+Either use Staging Site Link or run on LocalHost instructions below
+
+### Staging Site Link
+#### *Disclaimer this site is hosted on Heroku which sleeps apps on free tier so let app wake up first then reload page for smoother loading :-)
+[https://meetupplanner.herokuapp.com/](https://meetupplanner.herokuapp.com/)
 
 ### How to run site on localhost port 3000
 1. Install Node.js on your computer get from this website https://nodejs.org/en/
