@@ -1,0 +1,22 @@
+extends base
+
+block body
+  header
+    span LOGIN
+  section(id='form')
+    br
+    form(method='POST' action='/login')
+      div.error.center Password or Email Was Incorrect
+      label(for='email')
+        span(class='sr-only hide') Email
+        input(type='email' id='email' name='email' autofocus required placeholder='EMAIL' autocomplete='email')
+      label(for='password')
+        span(class='sr-only hide') Password
+        input(type='password' id='password' name='password' minLength='0' maxLength='35' required placeholder='PASSWORD' autocomplete='password')
+      input.button(type='submit' value='SUBMIT')
+  section(id='login')
+    div.orDiv
+      hr
+      div.circle.center
+        span OR
+    input.button(type='button' value='CREATE ACCOUNT' onclick="location.href='/'")

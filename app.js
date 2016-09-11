@@ -156,7 +156,6 @@ app.put('/addEvent/:userName', (req, res)=>{
 
     // find and send user to frontend
     User.find({ username: req.params.userName }, (err,user)=>{
-      console.log('user');
             if(err)
                 throw err;
             else

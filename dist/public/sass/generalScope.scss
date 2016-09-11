@@ -1,0 +1,33 @@
+/************************
+      General Scope
+************************/
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+label {
+  display: block;
+  margin-bottom: 20px;
+}
+input {
+  height: 40px;
+  width: 96%;
+  border: solid 1px $lightBlueBGColor;
+  text-align: center;
+  margin-left: 1.5%;
+}
+.hide {
+  display: none;
+}
+.center {
+  text-align: center;
+}
+.button {
+  background-color: $redBGColor;
+  color: $whiteBGColor;
+}
+.error {
+  color: $redBGColor;
+  padding-bottom: 10px;
+}

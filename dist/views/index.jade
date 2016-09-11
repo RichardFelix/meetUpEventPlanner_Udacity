@@ -1,5 +1,33 @@
 extends base
 
 block body
-  | Greta
-  
+  header
+    span CREATE ACCOUNT
+  section(id='form')
+    form(method='POST' action='/create')
+      label(for='name')
+        br
+        span(class='sr-only hide') Name
+        input(type='text' id='name' name='name' autofocus required placeholder='NAME' autocomplete='name')
+      label(for='email')
+        span(class='sr-only hide') Email
+        input(type='email' id='email' name='email' required placeholder='EMAIL' autocomplete='email')
+      label(for='password')
+        span(class='sr-only hide') Password
+        input(type='password' id='password' name='password' minLength='0' maxLength='35' required placeholder='PASSWORD' autocomplete='password')
+      label(for='employer')
+        span(class='sr-only hide') Employer
+        input(type='text' id='employer' name='employer' placeholder='EMPLOYER ( OPTIONAL )' autocomplete='employer')
+      label(for='job')
+        span(class='sr-only hide') Job Title
+        input(type='text' id='job' name='job' placeholder='JOB TITLE ( OPTIONAL )' autocomplete='job')
+      label(for='birthday')
+        span(class='sr-only hide') Birthday
+        input(type='text' id='birthday' name='bday' placeholder='BIRTHDAY ( OPTIONAL )' onfocus='(this.type="date")' autocomplete='bday')
+      input.button(type='submit' value='SUBMIT')
+  section(id='login')
+    div.orDiv
+      hr
+      div.circle.center
+        span OR
+    input.button(type='button' value='LOG IN' onclick="location.href='/login-page'")
