@@ -1,4 +1,4 @@
-# Meet up Event Planner ( Work In Progress )
+# Meet up Event Planner
 
 ## Summary
 
