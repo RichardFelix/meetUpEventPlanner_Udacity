@@ -11,7 +11,7 @@ block body
         input(type='text' id='name' name='name' autofocus required placeholder='NAME' autocomplete='name')
       label(for='email')
         span(class='sr-only hide') Email
-        input(type='email' id='email' name='email' required placeholder='EMAIL' autocomplete='email')
+        input(type='email' id='email' onfocusout="emailValid()" name='email' required placeholder='EMAIL' autocomplete='email')
       label(for='password')
         span(class='sr-only hide') Password
         input(type='password' id='password' name='password' minLength='6' maxLength='35' pattern='[A-Z][a-z0-9_-]{5,35}' title='Must contain first letter Uppercase, and at least 6 or more characters' required placeholder='PASSWORD' autocomplete='password')
@@ -24,10 +24,25 @@ block body
       label(for='birthday')
         span(class='sr-only hide') Birthday
         input(type='text' id='birthday' name='bday' placeholder='BIRTHDAY ( OPTIONAL )' onfocus='(this.type="date")' autocomplete='bday')
-      input.button(type='submit' value='SUBMIT')
+      input.button(type='submit' class='btn' value='SUBMIT')
   section(id='login')
     div.orDiv
       hr
       div.circle.center
         span OR
-    input.button(type='button' value='LOG IN' onclick="location.href='/login-page'")
+    input.button(type='button' class='btn' value='LOG IN' onclick="location.href='/login-page'")
+  script.
+      'use strict';
+      
+      //- var forms = document.getElementsByTagName('form');
+      //-   for (var i = 0; i < forms.length; i++) {
+      //-     forms[i].addEventListener('invalid', function(e) {
+      //-       e.preventDefault();
+      //-     }, true);
+      //-   }
+
+      function emailValid(){
+        // TODO: create validity message under item after onfocusout
+        // TODO: tweak validity invalid css
+        document.getElementById('email').setCustomValidity("wrong sucka!!"); 
+      }

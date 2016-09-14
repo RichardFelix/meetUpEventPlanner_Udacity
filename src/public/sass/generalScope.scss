@@ -10,12 +10,28 @@ label {
   display: block;
   margin-bottom: 20px;
 }
-input {
+input, textarea{
   height: 40px;
   width: 96%;
   border: solid 1px $lightBlueBGColor;
   text-align: center;
   margin-left: 1.5%;
+}
+input:invalid {
+  outline: 2px solid red;
+}
+input:focus:invalid {
+  color: red;
+}
+input:not(:focus):invalid {
+  outline: 2px solid red;
+}
+input:focus:invalid {
+  outline: 2px solid blue;
+}
+textarea{
+  resize: none;
+  padding-top: 27px;
 }
 .hide {
   display: none;
@@ -26,6 +42,12 @@ input {
 .button {
   background-color: $redBGColor;
   color: $whiteBGColor;
+}
+.submitDisabled{
+  background-color: grey;
+}
+.btn{
+  width: 97.5%;
 }
 .error {
   color: $redBGColor;

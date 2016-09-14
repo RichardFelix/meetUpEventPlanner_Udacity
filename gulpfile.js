@@ -62,10 +62,10 @@ GULP.task('dev:jadeLint', ()=>{
     .pipe($.pugLint());
 });
 
-GULP.task('dev:sassLint', ()=>{
-  return GULP.src(CONFIG.styles.srcDir)
-    .pipe($.scssLint());
-});
+// GULP.task('dev:sassLint', ()=>{
+//   return GULP.src(CONFIG.styles.srcDir)
+//     .pipe($.scssLint());
+// });
 
 GULP.task('dev:jsBabel', ()=>{
   return GULP
@@ -81,8 +81,8 @@ GULP.task('dev',
   GULP.parallel(
     'dev:sass',
     'dev:lint',
-    'dev:jadeLint',
-    'dev:sassLint'//,
+    'dev:jadeLint'//,
+    //'dev:sassLint'//,
     // 'dev:jsBabel'
 ));
 
@@ -93,7 +93,7 @@ function devWatch(){
     GULP.watch(CONFIG.scripts.src, GULP.series('dev:lint'));
     // GULP.watch(CONFIG.scripts.src, GULP.series('dev:jsBabel'));
     GULP.watch(CONFIG.jade.srcDir, GULP.series('dev:jadeLint'));
-    GULP.watch(CONFIG.styles.srcDir, GULP.series('dev:sassLint'));
+    //GULP.watch(CONFIG.styles.srcDir, GULP.series('dev:sassLint'));
 }
 
 GULP.task('default', GULP.series('dev:watch'));
