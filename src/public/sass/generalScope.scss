@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-align: center;
 }
 label {
   display: block;
@@ -12,21 +13,22 @@ label {
 }
 input, textarea{
   height: 40px;
-  width: 96%;
+  width: 95%;
   border: solid 1px $lightBlueBGColor;
   text-align: center;
-  margin-left: 1.5%;
+}
+input:focus:valid{
+  outline: 2px solid $lightBlueBGColor !important;
 }
 input:invalid {
   outline: 2px solid red;
-}
-input:focus:invalid {
   color: red;
 }
 input:not(:focus):invalid {
   outline: 2px solid red;
+  color: red;
 }
-input:focus:invalid {
+input:focus {
   outline: 2px solid blue;
 }
 textarea{
@@ -47,9 +49,12 @@ textarea{
   background-color: grey;
 }
 .btn{
-  width: 97.5%;
+  width: 96.5%;
 }
 .error {
   color: $redBGColor;
   padding-bottom: 10px;
+}
+.errorMsg{
+  color: $redBGColor;
 }

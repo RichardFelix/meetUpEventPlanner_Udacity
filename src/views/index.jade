@@ -8,13 +8,16 @@ block body
       label(for='name')
         br
         span(class='sr-only hide') Name
-        input(type='text' id='name' name='name' autofocus required placeholder='NAME' autocomplete='name')
+        input(type='text' id='name' name='name' onfocusout="nameInvalid()" autofocus required placeholder='NAME' autocomplete='name')
+        span(id='nameError' class='errorMsg')
       label(for='email')
         span(class='sr-only hide') Email
-        input(type='email' id='email' onfocusout="emailValid()" name='email' required placeholder='EMAIL' autocomplete='email')
+        input(type='email' id='email' name='email' onfocusout="emailInvalid()" required placeholder='EMAIL' autocomplete='email')
+        span(id='emailError' class='errorMsg')
       label(for='password')
         span(class='sr-only hide') Password
-        input(type='password' id='password' name='password' minLength='6' maxLength='35' pattern='[A-Z][a-z0-9_-]{5,35}' title='Must contain first letter Uppercase, and at least 6 or more characters' required placeholder='PASSWORD' autocomplete='password')
+        input(type='password' id='password' onfocusout="passInvalid()" name='password' minLength='6' maxLength='35' pattern='[A-Z][a-z0-9_-]{5,35}' title='Must contain first letter Uppercase, and at least 6 or more characters' required placeholder='PASSWORD' autocomplete='password')
+        span(id='passwordError' class='errorMsg')
       label(for='employer')
         span(class='sr-only hide') Employer
         input(type='text' id='employer' name='employer' placeholder='EMPLOYER ( OPTIONAL )' autocomplete='employer')
@@ -40,9 +43,31 @@ block body
       //-       e.preventDefault();
       //-     }, true);
       //-   }
+      
+      function checkOutline(elem, errorElem, msg){
+        var element = document.getElementById(elem),
+            style = window.getComputedStyle(element),
+            outline = style.getPropertyValue('outline');
 
-      function emailValid(){
+        if(outline == 'rgb(255, 0, 0) solid 2px' ){
+          var para = document.createElement("P");
+          var t = document.createTextNode(msg);
+          para.appendChild(t);
+          document.getElementById(errorElem).appendChild(para);
+        }  
+      }
+
+      function passInvalid(){
+        checkOutline('password', 'passwordError', 'Invalid Password - Must contain first letter Uppercase, and at least 6 or more characters');
         // TODO: create validity message under item after onfocusout
         // TODO: tweak validity invalid css
         document.getElementById('email').setCustomValidity("wrong sucka!!"); 
+      }
+      
+      function nameInvalid(){
+        checkOutline('name', 'nameError', 'Name is Required');
+      }
+      
+      function emailInvalid(){
+        checkOutline('email', 'emailError', 'Invalid Email Format');
       }
