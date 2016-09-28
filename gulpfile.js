@@ -13,7 +13,7 @@ const CONFIG = {
         prodDest: 'dist/public/css/'
     },
     scripts: {
-        src: 'src/public/js/preBuild/**/*.js',
+        src: 'src/public/js/*.js',
         bundle: 'custom.js',
         dest: 'src/public/js/',
         prodDest: 'dist/public/js/'

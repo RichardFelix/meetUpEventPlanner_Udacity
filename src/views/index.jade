@@ -27,41 +27,17 @@ block body
       label(for='birthday')
         span(class='sr-only hide') Birthday
         input(type='text' id='birthday' name='bday' placeholder='BIRTHDAY ( OPTIONAL )' onfocus='(this.type="date")' autocomplete='bday')
-      input.button(type='submit' class='btn' value='SUBMIT')
+      input.button(type='submit' class='btn' value='SUBMIT' )
   section(id='login')
     div.orDiv
       hr
       div.circle.center
         span OR
     input.button(type='button' class='btn' value='LOG IN' onclick="location.href='/login-page'")
+  include ./scripts.jade
   script.
-      'use strict';
-      
-      //- var forms = document.getElementsByTagName('form');
-      //-   for (var i = 0; i < forms.length; i++) {
-      //-     forms[i].addEventListener('invalid', function(e) {
-      //-       e.preventDefault();
-      //-     }, true);
-      //-   }
-      
-      function checkOutline(elem, errorElem, msg){
-        var element = document.getElementById(elem),
-            style = window.getComputedStyle(element),
-            outline = style.getPropertyValue('outline');
-
-        if(outline == 'rgb(255, 0, 0) solid 2px' ){
-          var para = document.createElement("P");
-          var t = document.createTextNode(msg);
-          para.appendChild(t);
-          document.getElementById(errorElem).appendChild(para);
-        }  
-      }
-
       function passInvalid(){
         checkOutline('password', 'passwordError', 'Invalid Password - Must contain first letter Uppercase, and at least 6 or more characters');
-        // TODO: create validity message under item after onfocusout
-        // TODO: tweak validity invalid css
-        document.getElementById('email').setCustomValidity("wrong sucka!!"); 
       }
       
       function nameInvalid(){

@@ -4,13 +4,13 @@
 var express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
-    config = require('./src/config/config.js'),
+    config = require('./dist/config/config.js'),
     session = require('express-session'),
     passport = require('passport'),
     localStrategy = require('passport-local'),
     localMongoose = require('passport-local-mongoose'),
     bodyParser = require('body-parser'),
-    User = require('./src/models/user'),
+    User = require('./dist/models/user'),
     mongoose = require('mongoose'),
     methodOverride = require('method-override');
 
@@ -27,10 +27,10 @@ mongoose.connect(config.mongoLocation_production); // change to mongoLocation_pr
 app.set('view engine', 'jade');
 
 // find the view folders
-app.set('views', 'src/views/');
+app.set('views', 'dist/views/');
 
 // make express look in the public directory for assets (css/js/img)
-app.use(express.static('src/public/'));
+app.use(express.static('dist/public/'));
 
 // Express Session Settings
 app.use(session({ // this is a way of requiring a module and passing functions to app
