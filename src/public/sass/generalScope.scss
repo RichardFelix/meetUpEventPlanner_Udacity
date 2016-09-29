@@ -14,20 +14,18 @@ label {
 input, textarea{
   height: 40px;
   width: 95%;
-  border: solid 1px $lightBlueBGColor;
   text-align: center;
+  outline: 2px solid $lightBlueBGColor;
 }
-input:focus:valid, textarea:focus:valid{
-  outline: 2px solid $lightBlueBGColor !important;
-}
-input:not(:focus):valid, textarea:not(:focus):valid{
-  outline:  2px solid $lightBlueBGColor !important;
-}
-input:invalid, textarea:invalid {
+input:invalid, textarea:invalid{
   outline: 2px solid red;
   color: red;
 }
-input:not(:focus):invalid, textarea:not(:focus):invalid {
+.invalid{
+  outline: 2px solid red !important;
+  color: red;
+}
+input:not(:focus):invalid, textarea:not(:focus):invalid{
   outline: 2px solid red;
   color: red;
 }

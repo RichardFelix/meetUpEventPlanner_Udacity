@@ -58,11 +58,11 @@ block body
           }     
           
           function startDateInvalid(){
-            checkOutline('startDate', 'startDateError', 'Start Date is Required');
+            validDates('startDate', 'startDateError', 'Start Date is Required and Must be a Future Date', false);
           }     
           
           function endDateInvalid(){
-            checkOutline('endDate', 'endDateError', 'End Date is Required');
+            validDates('endDate', 'endDateError', 'End Date is Required and Must be after Start Date', true);
           }     
            
           function guestListInvalid(){
@@ -70,4 +70,4 @@ block body
           }    
           function locationInvalid(){
             checkOutline('location', 'locationError', 'Location is Required');
-          }      
+          }
